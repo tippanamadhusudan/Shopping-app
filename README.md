@@ -2,26 +2,51 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
-## Development server
+## Introduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The Shopping app allows user to browse the products and purchase them.
 
-## Code scaffolding
+Currently the website is in development phase so only the home page and search function is avaiable and other tabs and functionality will be added in the future.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## FUNCTIONALITY OVERVIEW
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+  The example application is a Shopping app website. It uses a custom API for all requests (For now all the api request are mocked).
 
-## Running unit tests
+  # Current functionality:
+  Home page (URL: /home )
+    Has list of products which user can browse and also search for specific product
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  # Funtionality to be added in the future
+  Login and authentication functionality
+  Shopping Cart
+  Multiple product categories.
+  Orders page
+  Profile page
+  Purchased products tracking page
+  Page for each product
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## How to setup project in Local for developers
+  # Supported node versions
+    Node version: v18.19.0 and newer
 
-## Further help
+  # First clone the Repo
+    To clone using HTTPS link open command interface and enter
+      # git clone https://github.com/tippanamadhusudan/Shopping-app.git
+    To clone through GITHUB CLI
+      # gh repo clone tippanamadhusudan/Shopping-app (to clone through Github CLI)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+  # Install node modules: 
+    Open the project folder in the VScode or your preferred editor. Open command terminal and enter 
+      # npm install.
+    This will install all the dependencies of the project.
+  
+  # Development server
+  Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+  # Build
+  Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+  # Running unit tests
+  Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
