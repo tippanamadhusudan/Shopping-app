@@ -18,13 +18,13 @@ Currently the website is in development phase so only the home page and search f
     Has list of products which user can browse and also search for specific product
 
   # Funtionality to be added in the future
-  Login and authentication functionality
-  Shopping Cart
-  Multiple product categories.
-  Orders page
-  Profile page
-  Purchased products tracking page
-  Page for each product
+    Login and authentication functionality
+    Shopping Cart
+    Multiple product categories.
+    Orders page
+    Profile page
+    Purchased products tracking page
+    Page for each product
 
 
 ## How to setup project in Local for developers
