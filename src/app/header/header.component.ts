@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from '../services/products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class HeaderComponent {
   productsService = inject(ProductsService);
+  router = inject(Router);
   
   myForm: FormGroup = new FormGroup({ 
     myInput: new FormControl('')
@@ -18,6 +20,10 @@ export class HeaderComponent {
 
   searchProduct() {
     this.productsService.searchProducts(this.myForm.get('myInput')?.value);
+  }
+
+  goToCart() {
+    this.router.navigate(['/cart']);
   }
 
 }

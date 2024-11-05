@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, mergeMap, Observable, of, shareReplay } from 'rxjs';
 import { Products } from '../../mock/products';
+import { Product } from '../Models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  products: any = null;
+  products: Product[] | null = null;
   showingAllProducts: boolean = true;
 
   /********************************** EXPLANATION ************************************ */
@@ -18,13 +19,18 @@ export class ProductsService {
   productsSubject = new BehaviorSubject<any[]>([]);
   productsSubject$ = this.productsSubject.pipe(mergeMap(() => this.getProducts()));
 
-  constructor() { }
+  constructor() { 
+    this.getProducts();
+  }
 
   /** Mocking api response */
   getProducts() : Observable<any[]> {
     console.log('api call made');
-    this.products = Products;
-    return of(Products);
+    if(!this.products) {
+      // Make an api call here to get products
+      this.products = Products;
+    }
+    return of(this.products);
   }
 
   /** Instead of making an api call to get filtered products, doing the filtering here. It is similar to mocking the api response*/

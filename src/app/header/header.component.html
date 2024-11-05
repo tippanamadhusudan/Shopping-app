@@ -10,7 +10,7 @@
         <form [formGroup]="myForm">
             <input type="text" placeholder="Search for Product" formControlName="myInput" (keydown.enter)="searchProduct()" />
         </form>
-        <span class="icon">🛒</span>
+        <span class="icon" (click)="goToCart()">🛒</span>
         <span class="icon">👤</span>
     </div>
 </div>

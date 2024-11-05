@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterOutlet],
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css'
 })
@@ -25,7 +25,7 @@ export class ProductsPageComponent {
    * This saves us from making redundent api calls. 
    */
   
-  goToProductPage() {
-    this.router.navigate(['/product']);
+  goToProductPage(id: number) {
+    this.router.navigate(['/product', id]);
   }
 }

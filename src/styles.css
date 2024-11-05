@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f5f1;
@@ -46,6 +51,10 @@ body {
 .icon {
     font-size: 1.2em;
     margin: 0 8px;
+}
+
+.icon:hover {
+    cursor: pointer;
 }
 
 
@@ -122,12 +131,7 @@ body {
 }
 
 
-/* **************** Product component css ************ */
-
-* {
-    box-sizing: border-box;
-}
-
+/* **************************** Product component css ************ */
 .location {
     font-size: 0.9em;
 }
@@ -219,4 +223,126 @@ body {
     font-size: 0.9em;
     color: #555;
     margin-top: 5px;
+}
+
+/* ****************************** Shopping cart page CSS ****************** */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+.cart-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 1.8em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.product-image {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.item-details {
+    display: flex;
+    gap: 20px;
+}
+
+.item-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.item-info h2 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.best-seller {
+    display: inline-block;
+    background-color: #ffa41c;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 0.8em;
+    margin: 5px 0;
+    border-radius: 3px;
+}
+
+.item-actions {
+    margin-top: 10px;
+    color: #007185;
+}
+
+.item-actions a {
+    text-decoration: none;
+    color: #007185;
+    font-size: 0.9em;
+}
+
+.item-price {
+    text-align: right;
+    font-size: 1.2em;
+}
+
+.discount {
+    color: #b12704;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.price {
+    font-size: 1.4em;
+    color: #b12704;
+}
+
+.checkout-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.checkout-summary p {
+    margin: 0;
+    color: #555;
+}
+
+.subtotal {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    background-color: #ffd814;
+    color: #333;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checkout-button:hover {
+    background-color: #f7ca00;
 }

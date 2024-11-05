@@ -1,48 +1,31 @@
-<!-- <div class="navbar">
-    <div class="logo">Shopping</div>
-    <div class="location">
-        <span>Delivering to ......</span>
-    </div>
-    <div class="search-bar">
-        <input type="text" placeholder="Search for products" />
-    </div>
-    <div class="nav-icons">
-        <span>EN</span>
-        <span>Hello, Sign in</span>
-        <span>Returns & Orders</span>
-        <span>Cart</span>
-    </div>
-</div> -->
+@defer {
+    <div class="product-page">
+        <div class="product-gallery">
+            <!-- <div class="thumbnail-images">
+                <img src="path_to_thumbnail_1.jpg" alt="Thumbnail 1">
+                <img src="path_to_thumbnail_2.jpg" alt="Thumbnail 2">
+                <img src="path_to_thumbnail_3.jpg" alt="Thumbnail 3">
+                <img src="path_to_thumbnail_4.jpg" alt="Thumbnail 4">
+            </div> -->
+            <div class="main-image">
+                <img [src]="product?.image" [alt]="product?.name">
+            </div>
+        </div>
 
-<div class="product-page">
-    <div class="product-gallery">
-        <!-- <div class="thumbnail-images">
-            <img src="path_to_thumbnail_1.jpg" alt="Thumbnail 1">
-            <img src="path_to_thumbnail_2.jpg" alt="Thumbnail 2">
-            <img src="path_to_thumbnail_3.jpg" alt="Thumbnail 3">
-            <img src="path_to_thumbnail_4.jpg" alt="Thumbnail 4">
-        </div> -->
-        <div class="main-image">
-            <img src="/images/Smartphone_Samsung.jpeg" alt="Samsung S24 Ultra">
+        <div class="product-details">
+            <h1>{{product?.name}}</h1>
+            <p class="price">{{product?.price}}</p>
+            <!-- <p><strong>Only 2 left in stock.</strong></p> -->
+            <label for="quantity">Quantity:</label>
+            <select id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <div class="buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
         </div>
     </div>
-
-    <div class="product-details">
-        <h1>Product Title</h1>
-        <p class="price">$1,449.60</p>
-        <p><strong>Only 2 left in stock.</strong></p>
-        <label for="quantity">Quantity:</label>
-        <select id="quantity">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        <div class="buttons">
-            <button class="add-to-cart">Add to Cart</button>
-            <button class="buy-now">Buy Now</button>
-        </div>
-        <p class="info">Secure transaction</p>
-        <p class="info">Ships from Amazon</p>
-        <p class="info">Sold by HUMAN TECH</p>
-    </div>
-</div>
+}
