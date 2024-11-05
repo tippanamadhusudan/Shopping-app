@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ApplicationRef, Component, inject, OnInit } from '@angular/core';
-import { ProductsService } from './products.service';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products-page',
@@ -10,21 +11,9 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './products-page.component.html',
   styleUrl: './products-page.component.css'
 })
-export class ProductsPageComponent implements OnInit {
+export class ProductsPageComponent {
   productsService = inject(ProductsService);
-  cd = inject(ApplicationRef);
-
-  myForm: FormGroup = new FormGroup({ 
-    myInput: new FormControl('')
-  }); 
-  
-  ngOnInit() { 
-    console.log(this.myForm);
-    // this.myForm.get('myInput')?.valueChanges.subscribe(value => {
-    //   console.log(value);
-    //   this.searchProduct();
-    // });
-  }
+  router = inject(Router);
 
 /****************************** EXPLANATION ****************************************  */
 
@@ -35,7 +24,8 @@ export class ProductsPageComponent implements OnInit {
    * so I used keydown.enter so that searchProduct method only triggers when user clicked enter.
    * This saves us from making redundent api calls. 
    */
-  searchProduct() {
-    this.productsService.searchProducts(this.myForm.get('myInput')?.value);
+  
+  goToProductPage() {
+    this.router.navigate(['/product']);
   }
 }
