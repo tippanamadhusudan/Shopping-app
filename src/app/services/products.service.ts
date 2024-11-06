@@ -9,6 +9,7 @@ import { Product } from '../Models/product.model';
 export class ProductsService {
   products: Product[] | null = null;
   showingAllProducts: boolean = true;
+  productsInCart: Product[] = [];
 
   /********************************** EXPLANATION ************************************ */
 
@@ -25,7 +26,6 @@ export class ProductsService {
 
   /** Mocking api response */
   getProducts() : Observable<any[]> {
-    console.log('api call made');
     if(!this.products) {
       // Make an api call here to get products
       this.products = Products;
@@ -48,5 +48,21 @@ export class ProductsService {
     });
     this.showingAllProducts = false;
     console.log(this.products);
+  }
+
+  addToCart(id: number | undefined) {
+    let product = this.products?.find(product => product.id == id);
+    console.log(product);
+    if(product) this.productsInCart.push(product);
+    console.log(this.productsInCart);
+  }
+
+  deleteFromCart(id: number) {
+    let remainingProducts = this.productsInCart?.filter(product => product.id !== id);
+    if(remainingProducts?.length > 0) {
+      this.productsInCart = JSON.parse(JSON.stringify(remainingProducts));
+    } else {
+      this.productsInCart = [];
+    }
   }
 }

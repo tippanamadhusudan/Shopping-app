@@ -18,12 +18,9 @@ export class ProductComponent implements OnInit{
   ngOnInit(): void {
     this.activateRoute.paramMap.subscribe(params => {
       let productId = params.get('id');
-      console.log('id: ', productId);
       if(productId) {
         // Make an api call usind id to get the product details
-        console.log(this.productsService.products);
         this.product = this.productsService.products?.find(product => product.id === parseInt(productId));
-        console.log(this.product);
       }
     });
   }

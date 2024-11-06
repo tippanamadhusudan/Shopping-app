@@ -1,31 +1,56 @@
 @defer {
-    <div class="product-page">
-        <div class="product-gallery">
+    <div class="product-container">
+    
+        <!-- Left Section: Product Images -->
+        <div class="product-images">
+            <img [src]="product?.image" [alt]="product?.name" class="main-image">
             <!-- <div class="thumbnail-images">
-                <img src="path_to_thumbnail_1.jpg" alt="Thumbnail 1">
-                <img src="path_to_thumbnail_2.jpg" alt="Thumbnail 2">
-                <img src="path_to_thumbnail_3.jpg" alt="Thumbnail 3">
-                <img src="path_to_thumbnail_4.jpg" alt="Thumbnail 4">
+                <img src="path_to_image1.jpg" alt="Thumbnail 1">
+                <img src="path_to_image2.jpg" alt="Thumbnail 2">
+                <img src="path_to_image3.jpg" alt="Thumbnail 3">
             </div> -->
-            <div class="main-image">
-                <img [src]="product?.image" [alt]="product?.name">
-            </div>
         </div>
-
+    
+        <!-- Right Section: Product Details -->
         <div class="product-details">
-            <h1>{{product?.name}}</h1>
-            <p class="price">{{product?.price}}</p>
-            <!-- <p><strong>Only 2 left in stock.</strong></p> -->
-            <label for="quantity">Quantity:</label>
-            <select id="quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>
-            <div class="buttons">
-                <button class="add-to-cart">Add to Cart</button>
-                <button class="buy-now">Buy Now</button>
+            <h1>{{ product?.name }}</h1>
+            <p class="rating">4.2 ★★★★☆ <span>(13,619 ratings)</span></p>
+    
+            <div class="price-section">
+                <!-- <span class="deal">Limited-time deal</span>
+                <p class="discount">50% off</p> -->
+                <p class="price">${{product?.price}}</p>
+                <!-- <p class="list-price">List Price: <s>${{product?.price}}</s></p> -->
+                <!-- <div class="color-options">
+                    <button class="color-option selected">$49.98</button>
+                    <button class="color-option">$49.98</button>
+                    <button class="color-option">$49.98</button>
+                </div> -->
+            </div>
+    
+            <div class="delivery-info">
+                <!-- <p>FREE delivery Sunday, November 10. Order within 14 hrs 55 mins</p> -->
+                <p>In Stock</p>
+                <label for="quantity">Quantity:</label>
+                <select id="quantity">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+    
+            <button class="add-to-cart" (click)="productsService.addToCart(product?.id)">Add to Cart</button>
+            <button class="buy-now">Buy Now</button>
+    
+            <div class="about">
+                <h3>About this item</h3>
+                <!-- <ul>
+                    <li>JBL Deep Bass Sound: Get the most from your mixes with high-quality audio.</li>
+                    <li>Comfortable fit: Ergonomic design for comfortable, long-term wear.</li>
+                </ul> -->
             </div>
         </div>
+    
     </div>
+
 }

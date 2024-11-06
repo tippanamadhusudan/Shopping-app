@@ -1,64 +1,39 @@
 <div class="cart-container">
     <h1>Shopping Cart</h1>
 
-    <div class="cart-item">
-        <div class="item-details">
-            <img src="/images/Smartphone_Samsung.jpeg" alt="Earbuds" class="product-image">
-            <div class="item-info">
-                <h2>JBL Vibe Beam - True Wireless Earbuds - Black</h2>
-                <p>In Stock</p>
-                <p>Eligible for FREE Shipping</p>
-                <p>Colour Name: Black</p>
-                <label for="qty1">Qty:</label>
-                <select id="qty1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <div class="item-actions">
-                    <a href="#">Delete</a> |
-                    <!-- <a href="#">Share</a> -->
+    @for(item of productsService.productsInCart ; track item.id) {
+        <div class="cart-item">
+            <div class="item-details">
+                <img [src]="item.image" [alt]="item.name" class="product-image">
+                <div class="item-info">
+                    <h2>{{item.name}}</h2>
+                    <p>In Stock</p>
+                    <p>Eligible for FREE Shipping</p>
+                    <p>Colour Name: Black</p>
+                    <label for="qty1">Qty:</label>
+                    <select id="qty1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <div class="item-actions">
+                        <a href="#">Delete</a> |
+                        <!-- <a href="#">Share</a> -->
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="item-price">
-            <span class="discount">50% off</span>
-            <span class="price">$49.98</span>
-            <p>List Price: <s>$99.98</s></p>
-        </div>
-    </div>
-
-    <div class="cart-item">
-        <div class="item-details">
-            <img src="/images/S24Ultra_case.webp" alt="TV Stick" class="product-image">
-            <div class="item-info">
-                <h2>Amazon Fire TV Stick 4K Max streaming device</h2>
-                <p>In Stock</p>
-                <p>Eligible for FREE Shipping</p>
-                <p>Configuration: Fire TV Stick 4K</p>
-                <label for="qty2">Qty:</label>
-                <select id="qty2">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <div class="item-actions">
-                    <a href="#">Delete</a> |
-                    <!-- <a href="#">Share</a> -->
-                </div>
+            <div class="item-price">
+                <!-- <span class="discount">50% off</span> -->
+                <span class="price">${{item.price}}</span>
+                <!-- <p>List Price: <s>$99.98</s></p> -->
             </div>
         </div>
-        <div class="item-price">
-            <span class="discount">38% off</span>
-            <span class="price">$49.99</span>
-            <p>List Price: <s>$79.99</s></p>
-        </div>
-    </div>
+    }
 
     <div class="checkout-summary">
         <p><strong>Your order qualifies for FREE shipping</strong></p>
         <div class="subtotal">
-            <p>Subtotal (2 items): <strong>$99.97</strong></p>
+            <p>Subtotal ({{productsService.productsInCart.length}} items): <strong>${{totalAmount}}</strong></p>
         </div>
         <button class="checkout-button">Proceed to Checkout</button>
     </div>
