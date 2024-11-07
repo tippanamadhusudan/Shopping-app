@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, mergeMap, Observable, of, shareReplay } from 'rxjs';
 import { Products } from '../../mock/products';
-import { Product } from '../Models/product.model';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
