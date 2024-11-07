@@ -15,16 +15,21 @@
 
   # Current functionality:
     Home page (URL: /home )
-      Has list of products which user can browse and also search for specific product
+      Has list of products which user can browse and also search for specific product.
+    Signup page
+      User can register using name, email and password.
+    Login page 
+      User can signin using email and password
+    Product page
+      Has more details of the particular product and user can either add to cart to buy(functionality to be added in future) it.
+    Shopping cart
+      User can add products to cart and buy them at the same time.
 
   # Funtionality to be added in the future
-    Login and authentication functionality
-    Shopping Cart
     Multiple product categories.
     Orders page
     Profile page
     Purchased products tracking page
-    Page for each product
 
 
 ## How to setup project in Local for developers
