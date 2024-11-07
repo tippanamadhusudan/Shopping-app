@@ -14,7 +14,8 @@
         @if(authService.currentUserSig() === null) {
             <span class="icon" (click)="goToLogin()">👤Login</span>
         } @else {
-            <span class="icon" (click)="logout()">{{authService.currentUserSig()?.name}}👤Logout</span>
+            <p>{{authService.currentUserSig()?.name}}👤</p>
+            <span class="icon" (click)="logout()">Logout</span>
         }
     </div>
 </div>
