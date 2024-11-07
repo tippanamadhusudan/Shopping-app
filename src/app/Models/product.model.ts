@@ -4,3 +4,9 @@ export interface Product {
     price: number,
     image: any
 }
+
+export interface UserInterface {
+    email: string,
+    name: string,
+
+}

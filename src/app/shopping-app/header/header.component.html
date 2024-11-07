@@ -11,6 +11,10 @@
             <input type="text" placeholder="Search for Product" formControlName="myInput" (keydown.enter)="searchProduct()" />
         </form>
         <span class="icon" (click)="goToCart()">🛒</span>
-        <span class="icon">👤</span>
+        @if(authService.currentUserSig() === null) {
+            <span class="icon" (click)="goToLogin()">👤Login</span>
+        } @else {
+            <span class="icon" (click)="logout()">{{authService.currentUserSig()?.name}}👤Logout</span>
+        }
     </div>
 </div>

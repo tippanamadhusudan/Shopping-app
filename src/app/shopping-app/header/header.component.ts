@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { Router, RouterModule } from '@angular/router';
 export class HeaderComponent {
   productsService = inject(ProductsService);
   router = inject(Router);
+  authService = inject(AuthService);
   
   myForm: FormGroup = new FormGroup({ 
     myInput: new FormControl('')
@@ -24,6 +26,14 @@ export class HeaderComponent {
 
   goToCart() {
     this.router.navigate(['/cart']);
+  }
+
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }
