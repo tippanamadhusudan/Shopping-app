@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.getUsers();
     if(this.activatedRoute.snapshot.routeConfig?.path === 'login') {
       this.isLoginPage = true;
     } else {
@@ -41,15 +42,16 @@ export class LoginComponent implements OnInit {
   login() {
     const rawForm = this.loginForm.getRawValue();
     if(rawForm.email && rawForm.password) {
-      this.authService.login(rawForm.email, rawForm.password)
-        .subscribe({
-          next: () => {
-            console.log('User logged in');
-            this.route.navigate(['/home']);
-          },
-          error: (err) => {
-            this.errorMessage = err.code;
-          }
+      const payload = {
+        email: rawForm.email,
+        password: rawForm.password
+      };
+
+      this.authService.login(payload)
+        .subscribe(response => {
+          console.log(response);
+          this.authService.user$.next(response);
+          this.route.navigate(['/home']);
         });
     }
   }
@@ -57,16 +59,24 @@ export class LoginComponent implements OnInit {
   createAccount() {
     const rawForm = this.signupForm.getRawValue();
     if(rawForm.email && rawForm.password && rawForm.name) {
-      this.authService.signup(rawForm.email, rawForm.name, rawForm.password)
+      const payload = {
+        name: rawForm.name,
+        email: rawForm.email,
+        password: rawForm.password
+      };
+      this.authService.signup(payload)
         .subscribe({
           next: () => {
             console.log('Account created');
             this.route.navigate(['/home']);
-          },
-          error: (err) => {
-            this.errorMessage = err.code;
           }
         });
     }
+  }
+
+  getUsers() {
+    this.authService.getUsers().subscribe(el => {
+      console.log('/users: ', el);
+    });
   }
 }

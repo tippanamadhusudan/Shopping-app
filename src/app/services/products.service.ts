@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, mergeMap, Observable, of, shareReplay } from 'rxjs';
 import { Products } from '../../mock/products';
 import { Product } from '../models/product.model';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class ProductsService {
   products: Product[] | null = null;
   showingAllProducts: boolean = true;
   productsInCart: Product[] = [];
+  productsCollection: any;
 
   /********************************** EXPLANATION ************************************ */
 
@@ -20,14 +22,23 @@ export class ProductsService {
   productsSubject = new BehaviorSubject<any[]>([]);
   productsSubject$ = this.productsSubject.pipe(mergeMap(() => this.getProducts()));
 
-  constructor() { 
+
+  constructor(firestore: Firestore) { 
+    this.productsCollection = collection(firestore, 'products');
     this.getProducts();
   }
+
 
   /** Mocking api response */
   getProducts() : Observable<any[]> {
     if(!this.products) {
       // Make an api call here to get products
+      let data = collectionData(this.productsCollection, {
+        idField: 'id'
+      }) as Observable<any>;
+      data.subscribe(el => {
+        console.log('response: ', el);
+      });
       this.products = Products;
     }
     return of(this.products);

@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ProductsPageComponent } from "./shopping-app/products-page/products-page.component";
 import { HeaderComponent } from "./shopping-app/header/header.component";
 import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ProductsPageComponent, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -20,7 +19,7 @@ export class AppComponent implements OnInit {
       if(user) {
         this.authService.currentUserSig.set({
           email: user.email,
-          name: user.displayName
+          name: user.name
         })
       } else {
         this.authService.currentUserSig.set(null);

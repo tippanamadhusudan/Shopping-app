@@ -1,33 +1,56 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, user } from '@angular/fire/auth';
-import { from, Observable } from 'rxjs';
+import { Auth } from '@angular/fire/auth';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserInterface } from '../models/product.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   firebaseAuth = inject(Auth);
-  user$ = user(this.firebaseAuth);
+  http = inject(HttpClient);
+  user$ = new BehaviorSubject<any>(null);
   currentUserSig = signal<UserInterface | null | undefined>(undefined);
 
-  signup(email: string, name: string, password: string): Observable<void> {
-    const promise = createUserWithEmailAndPassword(this.firebaseAuth, email, password)
-      .then(response => updateProfile(response.user, {displayName: name}));
-
-      return from(promise);
+  getUsers(): Observable<any> {
+    return this.http.get("http://localhost:8080/shoppingapp/users");
   }
 
-  login(email: string, password: string): Observable<void> {
-    const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password)
-      .then(() => {});
-    return from(promise);
+  signup(signupFormValues: any) {
+    const apiUrl = "http://localhost:8080/shoppingapp/signup";
+    
+    return this.http.post(apiUrl, signupFormValues);
   }
 
-  logout(): Observable<void> {
-    const promise = signOut(this.firebaseAuth);
-    return from(promise);
+  login(loginFormValues: any) {
+    const apiUrl = "http://localhost:8080/shoppingapp/login";
+
+    return this.http.post(apiUrl, loginFormValues);
   }
+
+  logout() {
+    this.user$.next(null);
+  }
+
+  /**************************** Firebase Login *************************** */
+  // signup(email: string, name: string, password: string): Observable<void> {
+  //   const promise = createUserWithEmailAndPassword(this.firebaseAuth, email, password)
+  //     .then(response => updateProfile(response.user, {displayName: name}));
+
+  //     return from(promise);
+  // }
+
+  // login(email: string, password: string): Observable<void> {
+  //   const promise = signInWithEmailAndPassword(this.firebaseAuth, email, password)
+  //     .then(() => {});
+  //   return from(promise);
+  // }
+
+  // logout(): Observable<void> {
+  //   const promise = signOut(this.firebaseAuth);
+  //   return from(promise);
+  // }
 
   constructor() { }
 }
