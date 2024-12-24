@@ -4,7 +4,7 @@ import { catchError, throwError } from 'rxjs';
 export const httpInterceptor: HttpInterceptorFn = (req, next) => {
   const clonedRequest = req.clone({
     setHeaders: {
-      // Authorization: `Bearer ${localStorage.getItem('token') || ''}`,
+      Authorization: `Bearer ${localStorage.getItem('shoppingappToken') || ''}`,
       'Content-Type': 'application/json', // Set content type
     },
   });

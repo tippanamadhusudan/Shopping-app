@@ -48,8 +48,9 @@ export class LoginComponent implements OnInit {
       };
 
       this.authService.login(payload)
-        .subscribe(response => {
-          console.log(response);
+        .subscribe((response: any) => {
+          console.log('login: ', response);
+          localStorage.setItem('shoppingappToken', response.token);
           this.authService.user$.next(response);
           this.route.navigate(['/home']);
         });
